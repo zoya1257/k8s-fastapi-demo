@@ -18,6 +18,13 @@ spec:
           imagePullPolicy: IfNotPresent  # 👈 use local image if available
           ports:
             - containerPort: 8000
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: API_KEY 
+                
 ---
 apiVersion: v1
 kind: Service
